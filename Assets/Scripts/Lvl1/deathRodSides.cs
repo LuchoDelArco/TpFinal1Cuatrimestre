@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class deathRodSides : MonoBehaviour
 {
-	float speed = 0.08f;
+	float speed = 0.15f;
 	bool toRight;
 
 	public GameObject topeIzq;

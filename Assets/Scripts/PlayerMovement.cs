@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
 	float rotationSpeed = 3;
 	float jumpForce = 3;
 	public GameObject player;
-	public Text camino;
-	public GameObject platform;
+	
+	
 
 	bool hasJump;
 	Rigidbody rb;
@@ -51,38 +51,18 @@ public class PlayerMovement : MonoBehaviour
 			hasJump = false;
 
 		}
-		if (gameObject.transform.position.y < -10)
-		{
-			transform.position = new Vector3(0,0.5f,0);
-		}
+		
 	}
 
 	
 
-		void OnCollisionEnter(Collision col)
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag == "ground")
 		{
-			if (col.gameObject.tag == "ground")
-			{
-				hasJump = true ;
-			}
-			if (col.gameObject.tag == "deathObs")
-			{
-				transform.position = new Vector3(0, 0.1f, 0);
-			}
-			if (col.gameObject.name == "Prueba")
-			{
-				camino.text = "Camino Incorrecto";
-			}
-
-
-			//REVISAR PORQUE NO SE MUEVE CON LA PLATAFORM
-
-			if (col.gameObject.tag == "platform")
-			{
-				hasJump = true;
-				transform.position = platform.transform.position;
-			}
-
+			hasJump = true ;
 		}
+
+	}
 		
 }
