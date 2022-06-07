@@ -7,6 +7,7 @@ public class playerCollisions : MonoBehaviour
 {
 
 	public GameObject player;
+	public GameObject camera2;
 
 	public Text txtVidas;
 	public Text gameOver;
@@ -42,6 +43,7 @@ public class playerCollisions : MonoBehaviour
 		if (vidas == 0)
 		{
 			Destroy(player);
+			camera2.SetActive(true);
 			gameOver.text = "Game Over";
 		}
 
