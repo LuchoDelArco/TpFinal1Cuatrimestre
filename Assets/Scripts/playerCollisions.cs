@@ -45,6 +45,8 @@ public class playerCollisions : MonoBehaviour
 			Destroy(player);
 			camera2.SetActive(true);
 			gameOver.text = "Game Over";
+
+
 		}
 
 		txtVidas.text = "Vidas: " + vidas.ToString();
@@ -55,9 +57,9 @@ public class playerCollisions : MonoBehaviour
 		if (col.gameObject.name == "checkpoint1")
 		{
 			//valores del primer checkpoint
-			spawnX = 20;
+			spawnX = 18.54f;
 			spawnY = 0.1f;
-			spawnZ = 24;
+			spawnZ = 27.23f;
 		}	
 		if (col.gameObject.tag == "deathObs")
 		{
