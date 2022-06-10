@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	float rotationSpeed = 3;
 	float jumpForce = 3;
 	public GameObject player;
+
 	
 	
 
@@ -62,7 +63,19 @@ public class PlayerMovement : MonoBehaviour
 		{
 			hasJump = true ;
 		}
-
+	
 	}
-		
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.name == "MovingPlatform")
+		{
+			hasJump = true;
+			transform.parent = other.gameObject.transform;
+		}
+	}
+	void OnTriggerExit(Collider other)
+	{
+		transform.parent = null;
+	}
+
 }
