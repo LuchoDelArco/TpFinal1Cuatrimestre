@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-	
+	public float platformSpeed;
 	float movementSpeed = 0.1f;
 	float rotationSpeed = 3;
 	float jumpForce = 3;
 	public GameObject player;
 
-	
+	public GameObject platform;
+
+	public Transform parent;
 	
 
 	bool hasJump;
@@ -63,19 +65,17 @@ public class PlayerMovement : MonoBehaviour
 		{
 			hasJump = true ;
 		}
-	
-	}
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.name == "MovingPlatform")
+		if (col.gameObject.name == "MovingPlatform")
 		{
 			hasJump = true;
-			transform.parent = other.gameObject.transform;
+			gameObject.transform.SetParent(parent);
+			transform.position -= new Vector3(0, 0, platformSpeed);
+		}
+		else
+		{
+			gameObject.transform.SetParent(null);
 		}
 	}
-	void OnTriggerExit(Collider other)
-	{
-		transform.parent = null;
-	}
-
+	
+	
 }

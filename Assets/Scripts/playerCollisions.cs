@@ -24,9 +24,9 @@ public class playerCollisions : MonoBehaviour
     void Start()
     {
 		//valores iniciales del spawn
-		spawnX = 0;
-		spawnY = 0.1f;
-		spawnZ = 0;
+		//spawnX = 0;
+		//spawnY = 0.1f;
+		//spawnZ = 0;
 
 		gameOver.text = "";
 		txtVidas.text = "";
