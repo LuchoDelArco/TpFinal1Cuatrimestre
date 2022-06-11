@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class playerCollisions : MonoBehaviour
 {
+	public AudioSource source;
+	public AudioClip caida;
+	public AudioClip respawn;
+	public AudioClip muerte;
+	public AudioClip msg;
+	public AudioClip derrota;
+
 
 	public GameObject player;
 	public GameObject camera2;
+	public GameObject platform;
 
-	
-
+	public GameObject platformText;
 	public Text txtVidas;
 	public Text gameOver;
 
@@ -24,9 +31,9 @@ public class playerCollisions : MonoBehaviour
     void Start()
     {
 		//valores iniciales del spawn
-		//spawnX = 0;
-		//spawnY = 0.1f;
-		//spawnZ = 0;
+		spawnX = 0;
+		spawnY = 0.1f;
+		spawnZ = 0;
 
 		gameOver.text = "";
 		txtVidas.text = "";
@@ -37,18 +44,23 @@ public class playerCollisions : MonoBehaviour
     void Update()
     {
 		//Si el player baja a cierta altura, vuelve al último spawn
-		if (gameObject.transform.position.y < -10)
+		if (gameObject.transform.position.y < -6 && vidas > 0)
 		{
-			transform.position = new Vector3(spawnX, spawnY, spawnZ);
-			vidas--;
+			Respawn();
+
+			source.clip = caida;
+			source.Play();
 		}
+
+
 		if (vidas == 0)
 		{
 			Destroy(player);
 			camera2.SetActive(true);
 			gameOver.text = "Game Over";
 
-
+			source.clip = derrota;
+			source.Play();
 		}
 
 		txtVidas.text = "Vidas: " + vidas.ToString();
@@ -62,14 +74,45 @@ public class playerCollisions : MonoBehaviour
 			spawnX = 18.54f;
 			spawnY = 0.1f;
 			spawnZ = 27.23f;
-		}	
+
+			source.clip = respawn;
+			source.Play();
+		}
+
+
+		if (col.gameObject.name == "checkpoint2")
+		{
+			//valores del segundo checkpoint
+			spawnX = 35f;
+			spawnY = 0.1f;
+			spawnZ = 27f;
+
+			//Activa la plataforma y el texto
+			platform.SetActive(true);
+			platformText.SetActive(true);
+			Destroy(platformText, 3);
+
+			source.clip = msg;
+			source.Play();
+		}
+
+
 		if (col.gameObject.tag == "deathObs")
 		{
 			//cuando el player toque un obstáculo vuelve al último punto
-			transform.position = new Vector3(spawnX, spawnY, spawnZ);
-			vidas--;
+			Respawn();
+
+			source.clip = muerte;
+			source.Play();
+
 		}
-		
+	}
+
+	//Función del respawn
+	void Respawn()
+	{
+		transform.position = new Vector3(spawnX, spawnY, spawnZ);
+		vidas--;
 
 	}
 }

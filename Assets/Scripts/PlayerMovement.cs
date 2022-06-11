@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+	public AudioSource source;
+	public AudioClip salto;
+	public AudioClip caminata;
+
+
+
 	public float platformSpeed;
 	float movementSpeed = 0.1f;
 	float rotationSpeed = 3;
@@ -14,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject platform;
 
 	public Transform parent;
+
+
 	
 
 	bool hasJump;
@@ -53,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
 			rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 			hasJump = false;
 
+			source.clip = salto;
+			source.Play();
 		}
 		
 	}
@@ -64,12 +74,14 @@ public class PlayerMovement : MonoBehaviour
 		if (col.gameObject.tag == "ground")
 		{
 			hasJump = true ;
+
+			source.clip = caminata;
+			source.Play();
 		}
 		if (col.gameObject.name == "MovingPlatform")
 		{
 			hasJump = true;
 			gameObject.transform.SetParent(parent);
-			transform.position -= new Vector3(0, 0, platformSpeed);
 		}
 		else
 		{
