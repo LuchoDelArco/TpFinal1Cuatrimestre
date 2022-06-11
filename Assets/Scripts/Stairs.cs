@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Stairs : MonoBehaviour
 {
+	public AudioSource source;
+	public AudioClip holyMusic;
 
 	public GameObject prefab;
+	public GameObject Escalon;
+	public GameObject baseFinal;
 
 	float yOffset;
 	float zOffset;
@@ -22,23 +26,29 @@ public class Stairs : MonoBehaviour
     {
         
     }
+
 	void OnCollisionEnter(Collision col)
 	{
 		if (col.gameObject.name == "Player")
 		{
-			while (counter >= 0)
-			{
+
+			source.clip = holyMusic;
+			source.Play();
+
+			Escalon.SetActive(true);
+			baseFinal.SetActive(true);
+
+			while (counter < 14)
+			{ 
 				yOffset += 0.2f;
 				zOffset += -1;
 				Instantiate(prefab).transform.position += new Vector3(0, yOffset, zOffset);
 
 				counter++;
-				if(counter == 6)
-				{
-					break;
-				}
-			
+
+
 			}
+			
 		}
 	}
 }

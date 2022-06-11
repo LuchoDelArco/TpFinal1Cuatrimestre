@@ -29,13 +29,13 @@ public class platformMovement : MonoBehaviour
 			transform.position -= new Vector3(0, 0, speed);
 		}
 
-		if (transform.position.z > topeDer.transform.position.z - 1)
+		if (transform.position.z > topeDer.transform.position.z - 2.5f)
 		{
 			toRight = false;
 
 
 		}
-		if (transform.position.z < topeIzq.transform.position.z + 0.5f)
+		if (transform.position.z < topeIzq.transform.position.z + 1.4f)
 		{
 			toRight = true;
 
