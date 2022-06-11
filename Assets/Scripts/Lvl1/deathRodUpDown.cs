@@ -7,15 +7,15 @@ public class deathRodUpDown : MonoBehaviour
 	public GameObject topeU;
 	public GameObject topeD;
 
-	float speed = 0.08f;
+	public float speed = 0.08f;
 
-	bool Up = true;
+	public bool Up= true;
 	
 
     // Start is called before the first frame update
     void Start()
     {
-		Up = true;
+		
     }
 
     // Update is called once per frame
@@ -30,11 +30,11 @@ public class deathRodUpDown : MonoBehaviour
 			transform.Translate(0, -speed, 0);
 		}
 
-		if (gameObject.transform.position.y < topeD.transform.position.y + 0.5f)
+		if (gameObject.transform.position.y < topeD.transform.position.y)
 		{
 			Up = true;
 		}
-		if (gameObject.transform.position.y >= topeU.transform.position.y - 0.5f)
+		if (gameObject.transform.position.y >= topeU.transform.position.y)
 		{
 			Up = false;
 		}

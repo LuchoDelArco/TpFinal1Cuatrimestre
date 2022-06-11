@@ -11,16 +11,21 @@ public class playerCollisions : MonoBehaviour
 	public AudioClip muerte;
 	public AudioClip msg;
 	public AudioClip derrota;
+	public AudioClip collectable;
 
 
 	public GameObject player;
 	public GameObject camera2;
 	public GameObject platform;
 
+	public GameObject indicationTxt;
+
 	public GameObject platformText;
 	public Text txtVidas;
 	public Text gameOver;
+	public Text contadorObj;
 
+	int counter;
 	public int vidas = 5;
 
 	float spawnX;
@@ -34,6 +39,7 @@ public class playerCollisions : MonoBehaviour
 		spawnX = 0;
 		spawnY = 0.1f;
 		spawnZ = 0;
+
 
 		gameOver.text = "";
 		txtVidas.text = "";
@@ -96,7 +102,23 @@ public class playerCollisions : MonoBehaviour
 			source.clip = msg;
 			source.Play();
 		}
+		if (col.gameObject.tag == "collectable")
+		{
+			counter++;
+			source.clip = collectable;
+			source.Play();
 
+		}
+		if (col.gameObject.name == "checkpoint3")
+		{
+			//valores del primer checkpoint
+			spawnX = 36.5f;
+			spawnY = 2.95f;
+			spawnZ = -3.25f;
+
+			
+			contadorObj.text = "Tienes: " + counter + "/6";
+		}
 
 		if (col.gameObject.tag == "deathObs")
 		{
@@ -107,12 +129,26 @@ public class playerCollisions : MonoBehaviour
 			source.Play();
 
 		}
+		
+
+		if (col.gameObject.name == "Detector2")
+		{
+			indicationTxt.SetActive(true);
+			Destroy(indicationTxt, 3);
+
+
+			source.clip = msg;
+			source.Play();
+
+		}
+
+		
 	}
 
 	//Función del respawn
 	void Respawn()
 	{
-		transform.position = new Vector3(35f, spawnY, 27);
+		transform.position = new Vector3(36.5f, 2.95f, -3.25f);
 		vidas--;
 
 	}
