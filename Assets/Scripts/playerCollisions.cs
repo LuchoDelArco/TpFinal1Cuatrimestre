@@ -55,12 +55,13 @@ public class playerCollisions : MonoBehaviour
 
 		if (vidas == 0)
 		{
+			source.clip = derrota;
+			source.Play();
 			Destroy(player);
 			camera2.SetActive(true);
 			gameOver.text = "Game Over";
 
-			source.clip = derrota;
-			source.Play();
+			
 		}
 
 		txtVidas.text = "Vidas: " + vidas.ToString();
@@ -83,9 +84,9 @@ public class playerCollisions : MonoBehaviour
 		if (col.gameObject.name == "checkpoint2")
 		{
 			//valores del segundo checkpoint
-			spawnX = 35f;
+			spawnX = 35;
 			spawnY = 0.1f;
-			spawnZ = 27f;
+			spawnZ = 27;
 
 			//Activa la plataforma y el texto
 			platform.SetActive(true);
@@ -111,7 +112,7 @@ public class playerCollisions : MonoBehaviour
 	//Función del respawn
 	void Respawn()
 	{
-		transform.position = new Vector3(spawnX, spawnY, spawnZ);
+		transform.position = new Vector3(35f, spawnY, 27);
 		vidas--;
 
 	}

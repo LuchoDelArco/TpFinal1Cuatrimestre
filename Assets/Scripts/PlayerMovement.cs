@@ -7,8 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	public AudioSource source;
 	public AudioClip salto;
-	public AudioClip caminata;
-
+	public AudioClip platformAu;
 
 
 	public float platformSpeed;
@@ -75,13 +74,14 @@ public class PlayerMovement : MonoBehaviour
 		{
 			hasJump = true ;
 
-			source.clip = caminata;
-			source.Play();
 		}
 		if (col.gameObject.name == "MovingPlatform")
 		{
 			hasJump = true;
 			gameObject.transform.SetParent(parent);
+
+			source.clip = platformAu;
+			source.Play();
 		}
 		else
 		{

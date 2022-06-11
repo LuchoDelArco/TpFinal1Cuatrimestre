@@ -9,7 +9,7 @@ public class Stairs : MonoBehaviour
 
 	float yOffset;
 	float zOffset;
-	int i;
+	int counter;
 
     // Start is called before the first frame update
     void Start()
@@ -24,15 +24,20 @@ public class Stairs : MonoBehaviour
     }
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.name == "stairsBase")
+		if (col.gameObject.name == "Player")
 		{
-			while (i == 0)
+			while (counter >= 0)
 			{
-				yOffset -= 4;
-				zOffset -= 2;
+				yOffset += 0.2f;
+				zOffset += -1;
 				Instantiate(prefab).transform.position += new Vector3(0, yOffset, zOffset);
-				Destroy(gameObject, 0.3f);
-				i++;
+
+				counter++;
+				if(counter == 6)
+				{
+					break;
+				}
+			
 			}
 		}
 	}
