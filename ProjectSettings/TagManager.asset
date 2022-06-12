@@ -9,6 +9,7 @@ TagManager:
   - deathObs
   - platform
   - collectable
+  - FINAL
   layers:
   - Default
   - TransparentFX

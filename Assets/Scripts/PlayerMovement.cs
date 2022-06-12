@@ -10,12 +10,13 @@ public class PlayerMovement : MonoBehaviour
 	public AudioClip platformAu;
 
 
+
 	public float platformSpeed;
 	float movementSpeed = 0.1f;
 	float rotationSpeed = 3;
 	float jumpForce = 3;
 	public GameObject player;
-
+	public GameObject backgroundMusic;
 	public GameObject platform;
 
 	public Transform parent;
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 			hasJump = true;
 			gameObject.transform.SetParent(parent);
 
+			backgroundMusic.SetActive(false);
 			source.clip = platformAu;
 			source.Play();
 		}
@@ -88,6 +90,13 @@ public class PlayerMovement : MonoBehaviour
 			gameObject.transform.SetParent(null);
 		}
 	}
-	
-	
+
+	void OnCollisionExit(Collision col)
+	{
+		if (col.gameObject.name == "MovingPlatform")
+		{
+			backgroundMusic.SetActive(true);
+		}
+	}
+
 }
