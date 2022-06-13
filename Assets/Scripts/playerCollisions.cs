@@ -107,7 +107,7 @@ public class playerCollisions : MonoBehaviour
 
 		if (counter == 6)
 		{
-			puertaFinal.transform.position += new Vector3(0, .005f, 0);
+			puertaFinal.transform.position += new Vector3(0, .002f, 0);
 			
 		}
 
