@@ -5,8 +5,8 @@ using UnityEngine;
 public class cylinderMovement : MonoBehaviour
 {
 
-	float speed = 0.16f;
-	bool toRight;
+	public float speed = 0.16f;
+	public bool toRight = true;
 
 	public GameObject topeIzq;
 	public GameObject topeDer;
@@ -14,7 +14,7 @@ public class cylinderMovement : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		toRight = true;
+		
     }
 
     // Update is called once per frame
@@ -40,5 +40,7 @@ public class cylinderMovement : MonoBehaviour
 			toRight = true;
 			
 		}
+
+		transform.Rotate(0, 2, 0);
 	}
 }

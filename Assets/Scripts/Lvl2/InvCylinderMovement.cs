@@ -40,5 +40,6 @@ public class InvCylinderMovement : MonoBehaviour
 			toRight = true;
 
 		}
+		transform.Rotate(0, 2, 0);
 	}
 }
