@@ -38,7 +38,7 @@ public class playerCollisions : MonoBehaviour
 	public GameObject cnvsWin;
 
 	int counter;
-	public int vidas = 5;
+	public int vidas = 8;
 
 	public Text txtTimeFloored;
 

@@ -41,6 +41,6 @@ public class cylinderMovement : MonoBehaviour
 			
 		}
 
-		transform.Rotate(0, 2, 0);
+		transform.Rotate(0, 4, 0);
 	}
 }
