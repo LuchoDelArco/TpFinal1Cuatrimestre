@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	public float platformSpeed;
 	float movementSpeed = 0.1f;
 	float rotationSpeed = 3;
-	float jumpForce = 3;
+	float jumpForce = 3.5f;
 	public GameObject player;
 	public GameObject backgroundMusic;
 	public GameObject platform;
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 			hasJump = true ;
 
 		}
-		if (col.gameObject.name == "MovingPlatform")
+		if (col.gameObject.name == "movingPlat")
 		{
 			hasJump = true;
 			gameObject.transform.SetParent(parent);
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void OnCollisionExit(Collision col)
 	{
-		if (col.gameObject.name == "MovingPlatform")
+		if (col.gameObject.name == "movingPlat")
 		{
 			backgroundMusic.SetActive(true);
 		}

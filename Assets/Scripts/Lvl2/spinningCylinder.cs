@@ -16,6 +16,6 @@ public class spinningCylinder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		transform.Rotate(0, rotationSpeed, 0); 
+		transform.Rotate(-rotationSpeed, 0, 0); 
     }
 }

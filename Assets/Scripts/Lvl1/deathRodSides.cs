@@ -6,7 +6,7 @@ using UnityEngine;
 public class deathRodSides : MonoBehaviour
 {
 	float speed = 0.15f;
-	bool toRight;
+	public bool toRight;
 
 	public GameObject topeIzq;
 	public GameObject topeDer;
@@ -14,7 +14,7 @@ public class deathRodSides : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		toRight = true;
+	
     }
 
     // Update is called once per frame
