@@ -38,7 +38,7 @@ public class Stairs : MonoBehaviour
 			Escalon.SetActive(true);
 			baseFinal.SetActive(true);
 
-			while (counter < 14)
+			while (counter < 15)
 			{ 
 				yOffset += 0.2f;
 				zOffset += -1;
